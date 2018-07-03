@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Stict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
+strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="" name="description"/>
+    <meta content="webthemez" name="author"/>
+    <title>CODE STATISTICS</title>
+    <!-- Bootstrap Styles-->
+    <link href="../static/css/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="../static/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Custom Styles-->
+    <link href="../static/css/custom-styles.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../static/js/Lightweight-Chart/cssCharts.css">
+
+    <!-- jQuery Js -->
+    <script src="../static/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index"><strong><i class="icon fa fa-plane"></i> CODE STATISTICS</strong></a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li class="divider"></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a class="{% block list %}{% endblock %}" href="/user_list"><i class="fa fa-dashboard"></i>
+                        用户上传列表</a>
+                </li>
+                <li>
+                    <a class="{% block upload %}{% endblock %}" href="/upload"><i class="fa fa-desktop"></i> 我要上传</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                用户上传列表
+                <small>Welcome {{session['user_info']['nickname']}}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/detail/{{session['user_info']['id']}}">Myself</a></li>
+            </ol>
+
+        </div>
+        <div id="page-inner">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+
+
+</body>
+
+</html>

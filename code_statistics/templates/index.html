@@ -1,0 +1,118 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col-md-8 col-md-offset-2">
+        <!-- 图表容器 DOM -->
+        <div id="container" style="min-width: 600px;height:400px;"></div>
+        <script>
+            $(function () {
+                // 图表配置
+
+
+                $.ajax({
+                    url: '/user_list',
+                    type: 'POST',
+                    data: {},
+                    success: function (data) {
+                        var ret = JSON.parse(data);
+                        var options = {
+                            chart: {
+                                type: 'column'                          //指定图表的类型，默认是折线图（line）
+                            },
+                            title: {
+                                text: '用户上传代码总量柱状图'                 // 标题
+                            },
+                            xAxis: {
+                                title: {
+                                    text: '用户'
+                                },
+
+                                categories: []
+                            },
+                            yAxis: {
+                                title: {
+                                    text: '代码总量'
+                                }
+                            },
+                            series: [{
+                                data: []
+                            }]
+                        };
+                        for (var i = 0; i < ret.length; i++) {
+                            options.xAxis.categories.push(ret[i].username);
+//                            console.log(options.xAxis.categories);
+                            options.series[0].data.push(ret[i].count);
+//                            console.log(options.series[0].data);
+                        }
+                        console.log('----', options);
+
+                        // 图表初始化函数
+                        var chart = Highcharts.chart('container', options);
+                    }
+                });
+
+
+            });
+
+        </script>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                温馨提示
+            </div>
+            <div class="panel-body">
+                <p>记录你的代码 记录你的成长.</p>
+            </div>
+            <div class="panel-footer">
+                感谢你的使用
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-12 col-xs-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                用户列表
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>昵称</th>
+                            <th>查看代码提交记录</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in data_list %}
+                        <tr>
+                            <td>{{row.id}}</td>
+                            <td>{{row.username}}</td>
+                            <td>{{row.nickname}}</td>
+                            <td>
+                                <a href="/detail/{{row.id}}">查看</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /. ROW  -->
+
+{% endblock %}}
+
+{% block list %}
+active-menu
+{% endblock %}}

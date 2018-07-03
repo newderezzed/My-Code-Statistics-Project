@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="codelines@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="codelines">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bjj"/>
+    <schema id="4" parent="1" name="db1"/>
+    <schema id="5" parent="1" name="db2"/>
+    <schema id="6" parent="1" name="django_test"/>
+    <schema id="7" parent="1" name="duobiao"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mysite4"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="my_first_blog"/>
+    <schema id="12" parent="1" name="new"/>
+    <schema id="13" parent="1" name="performance_schema"/>
+    <schema id="14" parent="1" name="sql_base_study"/>
+    <schema id="15" parent="1" name="test"/>
+    <schema id="16" parent="1" name="yiibaidb"/>
+    <table id="17" parent="2" name="code_record"/>
+    <table id="18" parent="2" name="role"/>
+    <table id="19" parent="2" name="user"/>
+    <column id="20" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="17" name="user">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="22" parent="17" name="count">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="23" parent="17" name="date">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="24" parent="17" name="user">
+      <ColNames>user</ColNames>
+    </index>
+    <key id="25" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="26" parent="17" name="code_record_ibfk_1">
+      <ColNames>user</ColNames>
+      <RefSchemaName>codelines</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="27" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(99)|0</DataType>
+    </column>
+    <column id="29" parent="18" name="name_cn">
+      <Position>3</Position>
+      <DataType>varchar(99)|0</DataType>
+    </column>
+    <key id="30" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="19" name="username">
+      <Position>2</Position>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="33" parent="19" name="password">
+      <Position>3</Position>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="34" parent="19" name="nickname">
+      <Position>4</Position>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <index id="35" parent="19" name="nickname">
+      <ColNames>nickname</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="36" parent="19" name="password">
+      <ColNames>password</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="37" parent="19" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="39" parent="19" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <key id="40" parent="19" name="password">
+      <ColNames>password</ColNames>
+      <UnderlyingIndexName>password</UnderlyingIndexName>
+    </key>
+    <key id="41" parent="19" name="nickname">
+      <ColNames>nickname</ColNames>
+      <UnderlyingIndexName>nickname</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
