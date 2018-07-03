@@ -8,3 +8,4 @@
 
 **截图展示**
 
+![](https://github.com/newderezzed/My-Code-Statistics-Project/blob/master/gif/2018-07-03_18-56-26.gif?raw=true)
